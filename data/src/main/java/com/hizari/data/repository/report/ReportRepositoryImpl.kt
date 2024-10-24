@@ -8,7 +8,7 @@ import com.hizari.domain.model.report.Report
 import com.hizari.domain.repository.report.ReportRepository
 
 /**
- * Spaceflight News - com.hizari.data.repository.blog
+ * Spaceflight News - com.hizari.data.repository.report
  *
  * Created by hudiohizari on 24/10/24.
  * https://github.com/hudiohizari
