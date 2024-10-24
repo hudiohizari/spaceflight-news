@@ -1,4 +1,4 @@
-package com.hizari.spaceflightnews
+package com.hizari.spaceflightnews.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,6 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
+
+/**
+ * Spaceflight News - com.hizari.spaceflightnews.ui.activity
+ *
+ * Created by hudiohizari on 24/10/24.
+ * https://github.com/hudiohizari
+ *
+ */
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
