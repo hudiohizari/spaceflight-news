@@ -4,7 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.hizari.common.data.Resource
 import com.hizari.data.R
-import com.hizari.data.model.base.BaseResponse
+import com.hizari.data.model.base.ErrorResponse
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.internal.http.HTTP_NO_CONTENT
 import org.json.JSONException
@@ -56,7 +56,7 @@ abstract class SafeApiRequest {
         } else {
             errorBody?.let {
                 try {
-                    val data = Gson().fromJson(it, BaseResponse::class.java)
+                    val data = Gson().fromJson(it, ErrorResponse::class.java)
                     val resDetail = data.detail ?: context.getString(R.string.server_down)
                     Resource.Error(code, resDetail)
                 } catch (e: JSONException) {

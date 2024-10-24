@@ -10,6 +10,7 @@ package com.hizari.data.model.base
 
 data class BasePaginationResponse<T>(
     val count: Int? = null,
+    val detail: String? = null,
     val next: String? = null,
     val previous: String? = null,
     val results: List<T>? = null

@@ -7,6 +7,7 @@ package com.hizari.data.model.base
  * https://github.com/hudiohizari
  *
  */
-data class BaseResponse(
-    val detail: String? = null,
+
+data class ErrorResponse(
+    val detail: String? = null
 )
