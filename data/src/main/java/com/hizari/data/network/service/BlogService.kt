@@ -20,7 +20,7 @@ import retrofit2.http.Query
  *
  */
 interface BlogService {
-    @GET("v4/articles")
+    @GET("v4/blogs")
     suspend fun getBlogList(
         @Query("news_site") newsSite: String? = null,
         @Query("limit") limit: Int? = 10,
@@ -28,7 +28,7 @@ interface BlogService {
         @Query("search") search: String? = null
     ): Response<BasePaginationResponse<BlogDTO>>
 
-    @GET("v4/articles/{id}")
+    @GET("v4/blogs/{id}")
     suspend fun getBlogById(@Path("id") id: String): Response<BlogDTO>
 
     companion object {
