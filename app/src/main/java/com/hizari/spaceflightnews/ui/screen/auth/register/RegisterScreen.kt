@@ -1,4 +1,4 @@
-package com.hizari.spaceflightnews.ui.screen.auth
+package com.hizari.spaceflightnews.ui.screen.auth.register
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -10,7 +10,7 @@ import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
 import kotlinx.serialization.Serializable
 
 /**
- * Spaceflight News - com.hizari.spaceflightnews.ui.screen.auth
+ * Spaceflight News - com.hizari.spaceflightnews.ui.screen.auth.register
  *
  * Created by hudiohizari on 24/10/24.
  * https://github.com/hudiohizari

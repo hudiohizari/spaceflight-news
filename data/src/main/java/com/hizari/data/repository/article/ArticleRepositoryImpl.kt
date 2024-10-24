@@ -6,6 +6,7 @@ import com.hizari.data.network.service.ArticleService
 import com.hizari.data.network.util.SafeApiRequest
 import com.hizari.domain.model.article.Article
 import com.hizari.domain.repository.article.ArticleRepository
+import javax.inject.Inject
 
 /**
  * Spaceflight News - com.hizari.data.repository.article
@@ -14,7 +15,7 @@ import com.hizari.domain.repository.article.ArticleRepository
  * https://github.com/hudiohizari
  *
  */
-class ArticleRepositoryImpl(
+class ArticleRepositoryImpl @Inject constructor(
     private val mapper: ArticleMapper,
     private val service: ArticleService,
 ) : ArticleRepository, SafeApiRequest() {

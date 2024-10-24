@@ -6,6 +6,7 @@ import com.hizari.data.network.service.ReportService
 import com.hizari.data.network.util.SafeApiRequest
 import com.hizari.domain.model.report.Report
 import com.hizari.domain.repository.report.ReportRepository
+import javax.inject.Inject
 
 /**
  * Spaceflight News - com.hizari.data.repository.report
@@ -14,7 +15,7 @@ import com.hizari.domain.repository.report.ReportRepository
  * https://github.com/hudiohizari
  *
  */
-class ReportRepositoryImpl(
+class ReportRepositoryImpl @Inject constructor(
     private val mapper: ReportMapper,
     private val service: ReportService,
 ) : ReportRepository, SafeApiRequest() {

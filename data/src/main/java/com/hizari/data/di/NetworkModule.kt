@@ -37,6 +37,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    fun provideAccessTokenInterceptor(): AccessTokenInterceptor {
+        return AccessTokenInterceptor()
+    }
+
+    @Provides
+    @Singleton
     fun provideClient(
         chuckerInterceptor: ChuckerInterceptor,
         accessTokenInterceptor: AccessTokenInterceptor,

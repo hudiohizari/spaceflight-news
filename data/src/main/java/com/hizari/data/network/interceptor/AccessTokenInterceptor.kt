@@ -10,7 +10,7 @@ import okhttp3.Response
  * https://github.com/hudiohizari
  *
  */
-class AccessTokenInterceptor() : Interceptor {
+class AccessTokenInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
 

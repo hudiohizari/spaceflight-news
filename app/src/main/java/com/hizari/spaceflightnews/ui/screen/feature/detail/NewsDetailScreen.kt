@@ -1,4 +1,4 @@
-package com.hizari.spaceflightnews.ui.screen.main
+package com.hizari.spaceflightnews.ui.screen.feature.detail
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
 
 /**
- * Spaceflight News - com.hizari.spaceflightnews.ui.screen
+ * Spaceflight News - com.hizari.spaceflightnews.ui.screen.feature.detail
  *
  * Created by hudiohizari on 24/10/24.
  * https://github.com/hudiohizari

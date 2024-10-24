@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.hizari.spaceflightnews.ui.component.navhost.SlideNavHost
-import com.hizari.spaceflightnews.ui.screen.main.MainScreen
+import com.hizari.spaceflightnews.ui.screen.feature.main.MainScreen
 import kotlinx.serialization.Serializable
 
 /**

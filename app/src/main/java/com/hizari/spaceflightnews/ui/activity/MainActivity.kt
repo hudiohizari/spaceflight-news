@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.hizari.spaceflightnews.navigation.root.RootNavigation
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Spaceflight News - com.hizari.spaceflightnews.ui.activity
@@ -20,6 +21,7 @@ import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
  *
  */
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

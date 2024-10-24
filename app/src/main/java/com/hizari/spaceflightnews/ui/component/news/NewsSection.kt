@@ -3,6 +3,7 @@ package com.hizari.spaceflightnews.ui.component.news
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -12,9 +13,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -25,8 +28,16 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
+import com.hizari.common.data.Resource
+import com.hizari.common.util.SNLog
+import com.hizari.domain.model.article.Article
+import com.hizari.domain.model.blog.Blog
+import com.hizari.domain.model.report.Report
 import com.hizari.spaceflightnews.R
+import com.hizari.spaceflightnews.ui.component.state.DefaultEmpty
+import com.hizari.spaceflightnews.ui.component.state.DefaultError
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
+import com.hizari.spaceflightnews.ui.theme.Typography
 
 /**
  * Spaceflight News - com.hizari.spaceflightnews.ui.component.news
@@ -37,17 +48,41 @@ import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
  */
 
 data class News(
-    val id: String,
+    val id: Int,
     val title: String,
     val imageUrl: String,
 ) {
 
     companion object {
         val dummy = News(
-            id = "1",
+            id = 1,
             title = "Title",
             imageUrl = "https://picsum.photos/200/300"
         )
+
+        fun from(article: Article): News {
+            return News(
+                id = article.id,
+                title = article.title,
+                imageUrl = article.imageUrl
+            )
+        }
+
+        fun from(blog: Blog): News {
+            return News(
+                id = blog.id,
+                title = blog.title,
+                imageUrl = blog.imageUrl
+            )
+        }
+
+        fun from(report: Report): News {
+            return News(
+                id = report.id,
+                title = report.title,
+                imageUrl = report.imageUrl
+            )
+        }
     }
 }
 
@@ -55,11 +90,24 @@ data class News(
 @Composable
 fun PreviewNewsSection() {
     SpaceflightNewsTheme {
-        Column {
+        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             NewsSection(
-                newsList = listOf(News.dummy),
+                newsResource = Resource.Loading,
                 title = "Title",
-                onClickSeeMore = {}
+                onClickSeeMore = {},
+                onRetry = {},
+            )
+            NewsSection(
+                newsResource = Resource.Success(listOf(News.dummy)),
+                title = "Title",
+                onClickSeeMore = {},
+                onRetry = {},
+            )
+            NewsSection(
+                newsResource = Resource.Error(500, "Error"),
+                title = "Title",
+                onClickSeeMore = {},
+                onRetry = {},
             )
         }
     }
@@ -69,13 +117,14 @@ fun PreviewNewsSection() {
 fun NewsSection(
     modifier: Modifier = Modifier,
     contentPadding: Int = 16,
-    newsList: List<News>,
+    newsResource: Resource<List<News>>,
     onClickSeeMore: () -> Unit,
+    onRetry: (() -> Unit),
     textPadding: Int = 16,
     title: String,
 ) {
     ConstraintLayout(modifier = modifier.fillMaxWidth()) {
-        val (tTitle, tSeeMore, lrNews) = createRefs()
+        val (tTitle, tSeeMore, vNews) = createRefs()
 
         Text(
             modifier = Modifier.constrainAs(tTitle) {
@@ -96,28 +145,78 @@ fun NewsSection(
             }
             .clickable(onClick = onClickSeeMore), text = stringResource(R.string.see_more))
 
-        LazyRow(
-            modifier = Modifier.constrainAs(lrNews) {
-                end.linkTo(parent.end)
-                start.linkTo(parent.start)
-                top.linkTo(tTitle.bottom, 12.dp)
-                height = Dimension.value(120.dp)
-                width = Dimension.fillToConstraints
-            },
-            contentPadding = PaddingValues(
-                horizontal = contentPadding.dp,
-            ),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            items(newsList) { news ->
-                NewsItem(
-                    modifier = Modifier
-                        .aspectRatio(1f)
-                        .fillMaxHeight(),
-                    news = news,
-                    onClick = {}
+        when (newsResource) {
+            is Resource.Loading -> {
+                Box(
+                    modifier = Modifier.constrainAs(vNews) {
+                        bottom.linkTo(parent.bottom)
+                        end.linkTo(parent.end)
+                        start.linkTo(parent.start)
+                        top.linkTo(tTitle.bottom, 12.dp)
+                        height = Dimension.value(120.dp)
+                        width = Dimension.fillToConstraints
+                    },
+                ) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+            }
+
+            is Resource.Success -> {
+                val list = newsResource.data
+                if (list.isEmpty()) {
+                    DefaultEmpty(
+                        modifier = Modifier.constrainAs(vNews) {
+                            end.linkTo(parent.end)
+                            start.linkTo(parent.start)
+                            top.linkTo(tTitle.bottom, 12.dp)
+                            height = Dimension.value(120.dp)
+                            width = Dimension.fillToConstraints
+                        }
+                    )
+                } else {
+                    LazyRow(
+                        modifier = Modifier.constrainAs(vNews) {
+                            end.linkTo(parent.end)
+                            start.linkTo(parent.start)
+                            top.linkTo(tTitle.bottom, 12.dp)
+                            height = Dimension.value(120.dp)
+                            width = Dimension.fillToConstraints
+                        },
+                        contentPadding = PaddingValues(
+                            horizontal = contentPadding.dp,
+                        ),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        items(list) { news ->
+                            NewsItem(
+                                modifier = Modifier
+                                    .aspectRatio(1f)
+                                    .fillMaxHeight(),
+                                news = news,
+                                onClick = {}
+                            )
+                        }
+                    }
+                }
+            }
+
+            is Resource.Error -> {
+                DefaultError(
+                    modifier = Modifier.constrainAs(vNews) {
+                        end.linkTo(parent.end)
+                        start.linkTo(parent.start)
+                        top.linkTo(tTitle.bottom, 12.dp)
+                        height = Dimension.value(120.dp)
+                        width = Dimension.fillToConstraints
+                    },
+                    message = newsResource.asMessage(),
+                    onRetry = onRetry
                 )
             }
+
+            else -> SNLog.i("Unhandled state = ${newsResource.javaClass.name}")
         }
     }
 }
@@ -185,10 +284,11 @@ fun NewsItem(
                     start.linkTo(parent.start)
                     width = Dimension.fillToConstraints
                 },
-            text = news.title,
             color = MaterialTheme.colorScheme.onSurface,
-            maxLines = 1,
+            text = news.title,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
+            style = Typography.labelSmall,
         )
     }
 }

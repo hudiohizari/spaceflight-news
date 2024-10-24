@@ -6,6 +6,7 @@ import com.hizari.data.network.service.BlogService
 import com.hizari.data.network.util.SafeApiRequest
 import com.hizari.domain.model.blog.Blog
 import com.hizari.domain.repository.blog.BlogRepository
+import javax.inject.Inject
 
 /**
  * Spaceflight News - com.hizari.data.repository.blog
@@ -14,7 +15,7 @@ import com.hizari.domain.repository.blog.BlogRepository
  * https://github.com/hudiohizari
  *
  */
-class BlogRepositoryImpl(
+class BlogRepositoryImpl @Inject constructor(
     private val mapper: BlogMapper,
     private val service: BlogService,
 ) : BlogRepository, SafeApiRequest() {

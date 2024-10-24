@@ -1,7 +1,6 @@
-package com.hizari.spaceflightnews.ui.screen.auth
+package com.hizari.spaceflightnews.ui.screen.auth.login
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,7 +10,7 @@ import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
 import kotlinx.serialization.Serializable
 
 /**
- * Spaceflight News - com.hizari.spaceflightnews.ui.screen.auth
+ * Spaceflight News - com.hizari.spaceflightnews.ui.screen.auth.login
  *
  * Created by hudiohizari on 24/10/24.
  * https://github.com/hudiohizari

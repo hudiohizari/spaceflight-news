@@ -12,6 +12,6 @@ import com.google.gson.annotations.SerializedName
 
 data class EventDTO(
     @SerializedName("event_id")
-    val eventId: Int? = null,
+    val eventId: String? = null,
     val provider: String? = null
 )

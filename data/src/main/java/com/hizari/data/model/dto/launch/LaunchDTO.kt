@@ -12,6 +12,6 @@ import com.google.gson.annotations.SerializedName
 
 data class LaunchDTO(
     @SerializedName("launch_id")
-    val launchId: Int? = null,
+    val launchId: String? = null,
     val provider: String? = null
 )
