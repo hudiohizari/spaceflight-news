@@ -8,7 +8,7 @@ package com.hizari.domain.model.report
  *
  */
 data class Report(
-    val id: String,
+    val id: Int,
     val imageUrl: String,
     val title: String,
 )

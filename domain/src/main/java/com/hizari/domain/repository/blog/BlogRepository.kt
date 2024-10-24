@@ -13,8 +13,8 @@ import com.hizari.domain.model.blog.Blog
 interface BlogRepository {
     suspend fun getBlogList(
         newsSite: String? = null,
-        limit: Int,
-        offset: Int,
+        limit: Int = 10,
+        offset: Int = 10,
         search: String? = null,
     ): Resource<List<Blog>>
 

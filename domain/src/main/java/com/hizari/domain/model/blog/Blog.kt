@@ -8,7 +8,7 @@ package com.hizari.domain.model.blog
  *
  */
 data class Blog(
-    val id: String,
+    val id: Int,
     val imageUrl: String,
     val title: String,
 )

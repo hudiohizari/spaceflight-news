@@ -13,8 +13,8 @@ import com.hizari.domain.model.article.Article
 interface ArticleRepository {
     suspend fun getArticleList(
         newsSite: String? = null,
-        limit: Int,
-        offset: Int,
+        limit: Int = 10,
+        offset: Int = 10,
         search: String? = null,
     ): Resource<List<Article>>
 
