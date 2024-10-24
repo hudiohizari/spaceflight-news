@@ -12,6 +12,7 @@ espressoCore = "3.6.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 kotlin = "2.0.20"
+kotlinxSerialization = "1.7.2"
 ksp = "2.0.20-1.0.25"
 lifecycleRuntimeKtx = "2.8.6"
 material = "1.7.4"
@@ -33,6 +34,7 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "daggerHilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }

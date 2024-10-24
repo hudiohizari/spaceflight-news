@@ -1,4 +1,4 @@
-package com.hizari.spaceflightnews.ui.screen
+package com.hizari.spaceflightnews.ui.screen.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,10 +10,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hizari.spaceflightnews.R
+import com.hizari.spaceflightnews.navigation.main.MainNavAction
 import com.hizari.spaceflightnews.ui.component.main.Greeting
 import com.hizari.spaceflightnews.ui.component.news.News
 import com.hizari.spaceflightnews.ui.component.news.NewsSection
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
+import kotlinx.serialization.Serializable
 
 /**
  * Spaceflight News - com.hizari.spaceflightnews.ui.screen
@@ -23,16 +25,24 @@ import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
  *
  */
 
+@Serializable
+data object MainScreen
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewMainScreen() {
     SpaceflightNewsTheme {
-        MainScreen()
+        MainScreen(
+            mainNavAction = {}
+        )
     }
 }
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    mainNavAction: (action: MainNavAction) -> Unit,
+) {
     Column(modifier = modifier.fillMaxSize()) {
 
         Greeting(

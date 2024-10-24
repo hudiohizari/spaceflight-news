@@ -108,6 +108,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.dagger.hilt)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.kotlinx.serialization)
     implementation(libs.navigation.compose)
     implementation(platform(libs.androidx.compose.bom))
 

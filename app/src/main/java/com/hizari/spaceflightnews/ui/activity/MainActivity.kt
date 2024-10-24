@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.hizari.spaceflightnews.ui.screen.MainScreen
+import androidx.navigation.compose.rememberNavController
+import com.hizari.spaceflightnews.navigation.root.RootNavigation
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
 
 /**
@@ -24,9 +25,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val rootNavController = rememberNavController()
+
             SpaceflightNewsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding))
+                    RootNavigation(
+                        modifier = Modifier.padding(paddingValues = innerPadding),
+                        rootNavController = rootNavController,
+                        userLoggedIn = true,
+                    )
                 }
             }
         }
