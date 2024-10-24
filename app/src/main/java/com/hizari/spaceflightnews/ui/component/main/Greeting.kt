@@ -1,4 +1,4 @@
-package com.hizari.spaceflightnews.ui.component
+package com.hizari.spaceflightnews.ui.component.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Text
@@ -13,7 +13,7 @@ import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
 import java.util.Calendar
 
 /**
- * Spaceflight News - com.hizari.spaceflightnews.ui.component
+ * Spaceflight News - com.hizari.spaceflightnews.ui.component.main
  *
  * Created by hudiohizari on 24/10/24.
  * https://github.com/hudiohizari

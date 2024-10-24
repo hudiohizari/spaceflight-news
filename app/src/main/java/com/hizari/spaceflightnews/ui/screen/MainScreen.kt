@@ -1,12 +1,18 @@
 package com.hizari.spaceflightnews.ui.screen
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
-import com.hizari.spaceflightnews.ui.component.Greeting
+import com.hizari.spaceflightnews.R
+import com.hizari.spaceflightnews.ui.component.main.Greeting
+import com.hizari.spaceflightnews.ui.component.news.News
+import com.hizari.spaceflightnews.ui.component.news.NewsSection
 import com.hizari.spaceflightnews.ui.theme.SpaceflightNewsTheme
 
 /**
@@ -27,19 +33,65 @@ fun PreviewMainScreen() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    ConstraintLayout(
-        modifier = modifier.fillMaxSize()
-    ) {
-
-        val (gMain) = createRefs()
+    Column(modifier = modifier.fillMaxSize()) {
 
         Greeting(
-            modifier = Modifier.constrainAs(gMain) {
-                top.linkTo(parent.top, 16.dp)
-                start.linkTo(parent.start, 16.dp)
-                end.linkTo(parent.end, 16.dp)
-            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    end = 16.dp,
+                    start = 16.dp,
+                    top = 16.dp,
+                ),
             name = "User Name",
+        )
+
+        NewsSection(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            newsList = listOf(
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+            ),
+            onClickSeeMore = {},
+            title = stringResource(R.string.article)
+        )
+
+        NewsSection(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp),
+            newsList = listOf(
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+            ),
+            onClickSeeMore = {},
+            title = stringResource(R.string.blog)
+        )
+
+        NewsSection(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp),
+            newsList = listOf(
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+                News.dummy,
+            ),
+            onClickSeeMore = {},
+            title = stringResource(R.string.report)
         )
 
     }
