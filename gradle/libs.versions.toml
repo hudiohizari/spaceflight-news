@@ -2,9 +2,11 @@
 activityCompose = "1.9.3"
 agp = "8.6.1"
 androidxHilt = "1.2.0"
+chucker = "4.0.0"
 coilCompose = "2.7.0"
 composeBom = "2024.10.00"
 composeFonts = "1.7.4"
+dataStore = "1.1.1"
 constraintlayoutCompose = "1.0.1"
 coreKtx = "1.13.1"
 daggerHilt = "2.51.1"
@@ -12,11 +14,18 @@ espressoCore = "3.6.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 kotlin = "2.0.20"
+kotlinCoroutineTest = "1.8.1"
+kotlinTest = "2.0.20"
 kotlinxSerialization = "1.7.2"
 ksp = "2.0.20-1.0.25"
 lifecycleRuntimeKtx = "2.8.6"
 material = "1.7.4"
+mockitoCore = "5.12.0"
+mockitoInline = "5.2.0"
 navigationCompose = "2.8.3"
+okhttp = "5.0.0-alpha.7"
+retrofit = "2.11.0"
+turbine = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,17 +34,28 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "composeFonts" }
+androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-material-icon-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+cash-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+chucker-debug = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
+chucker-release = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose" }
 dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "daggerHilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+kotlin-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinCoroutineTest" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlinTest" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoCore" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }

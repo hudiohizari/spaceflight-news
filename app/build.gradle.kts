@@ -95,6 +95,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.androidx.core.ktx)
