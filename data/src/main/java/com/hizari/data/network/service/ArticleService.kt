@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * Spaceflight News - com.hizari.data.network.service
@@ -19,7 +20,12 @@ import retrofit2.http.Path
  */
 interface ArticleService {
     @GET("v4/articles")
-    suspend fun getArticleList(): Response<BasePaginationResponse<ArticleDTO>>
+    suspend fun getArticleList(
+        @Query("news_site") newsSite: String? = null,
+        @Query("limit") limit: Int? = 10,
+        @Query("offset") offset: Int? = 10,
+        @Query("search") search: String? = null
+    ): Response<BasePaginationResponse<ArticleDTO>>
 
     @GET("v4/articles/{id}")
     suspend fun getArticleById(@Path("id") id: String): Response<ArticleDTO>
